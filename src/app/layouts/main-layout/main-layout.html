@@ -1,0 +1,23 @@
+<div class="app-wrapper d-flex flex-column">
+    <app-header class="header"></app-header>
+
+    <div class="mobile-menu d-md-none" [class.open]="sidebarService.isOpen$ | async">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" (click)="sidebarService.close()">task item</a>
+            </li>
+        </ul>
+    </div>
+
+    <main class="d-flex flex-grow-1">
+        <aside class="sidebar d-none d-md-block">
+            sidebar
+        </aside>
+
+        <section class="content flex-grow-1">
+            <router-outlet></router-outlet>
+        </section>
+    </main>
+
+    <app-footer class="footer"></app-footer>
+</div>

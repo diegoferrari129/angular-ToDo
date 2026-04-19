@@ -1,0 +1,48 @@
+.app-wrapper, main {
+    overflow: hidden;
+}
+.app-wrapper {
+    height: 100vh;
+}
+
+.header, .footer {
+    flex-shrink: 0;
+    z-index: 2000;
+    height: 50px;
+}
+
+.sidebar {
+    flex-shrink: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-break: break-all;
+    width: 275px;
+    height: 100%;
+    background-color: #f8f9fa;
+}
+
+.content {
+    overflow-y: auto;
+    height: 100%;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    overflow: hidden;
+    z-index: 1500;
+    width: 100%;
+    height: calc(100vh - 100px); 
+    max-height: 0;
+    background-color: #f8f9fa;
+    transition: max-height 0.2s ease-out;
+}
+
+.mobile-menu.open {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+

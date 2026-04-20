@@ -3,12 +3,10 @@ import { TaskItemComponent } from './features/task/components/task-item.componen
 import { MainLayout } from './layouts/main-layout/main-layout';
 import { LoginComponent } from './features/auth/login/login.component';
 import { authGuard } from './core/guards/auth.guard';
+import { TaskFormComponent } from './features/task/components/task-form/task-form.component/task-form.component';
 
 export const routes: Routes = [
-    {
-        path: 'login',
-        component: LoginComponent
-    },
+
     {
         path: '',
         component: MainLayout,
@@ -16,13 +14,21 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'tasks',
+                redirectTo: 'login',
                 pathMatch: 'full'
+            },
+            {
+                path: 'login',
+                component: LoginComponent
+            },
+            {
+                path: 'tasks/new',
+                component: TaskFormComponent
             },
             {
                 path: 'tasks',
                 component: TaskItemComponent
-            }
+            },
         ]
     }
 ];

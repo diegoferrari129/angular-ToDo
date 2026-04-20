@@ -1,0 +1,24 @@
+<!-- task-form.component.html -->
+<div class="form-container">
+    <h2>Nuova Task</h2>
+
+    <form (ngSubmit)="createTask()">
+        <div class="form-group">
+            <label for="title">Titolo *</label>
+            <input type="text" id="title" [(ngModel)]="task.title" name="title" required
+                placeholder="Inserisci il titolo" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descrizione</label>
+            <textarea id="description" [(ngModel)]="task.description" name="description" rows="4"
+                placeholder="Inserisci una descrizione (opzionale)"></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                {{ 'Crea Task' }}
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
+import { Router } from '@angular/router';
+import { AppPaths } from '../../shared/app.paths';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'https://localhost:7169/api/auth';
+    private apiUrl = `${environment.apiUrl}/auth`;
     private tokenKey = 'token';
 
     constructor(private http: HttpClient, private router: Router) { }
@@ -25,13 +30,13 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        return this.getToken() !== null;
+        const token = this.getToken();
+        return token !== null && token.length > 0;
     }
 
     logout() {
         localStorage.removeItem(this.tokenKey);
-        this.router.navigate(['/login']);
+        this.router.navigate([AppPaths.LOGIN]);
     }
-
 
 }

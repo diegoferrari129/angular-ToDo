@@ -1,0 +1,27 @@
+<div class="login-container">
+    <div class="login-card">
+        <h2>📝 Task Manager</h2>
+
+        @if (error) {
+        <div class="error-message">
+            ❌ {{ error }}
+        </div>
+        }
+
+        <form (ngSubmit)="login()">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" [(ngModel)]="email" name="email" placeholder="esempio@email.com" required />
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" [(ngModel)]="password" name="password" placeholder="••••••" required />
+            </div>
+
+            <button type="submit" class="btn-login" [disabled]="loading">
+                {{ loading ? 'Accesso in corso...' : 'Accedi' }}
+            </button>
+        </form>
+    </div>
+</div>

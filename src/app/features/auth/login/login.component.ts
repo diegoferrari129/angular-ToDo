@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
+import { AppPaths } from '../../../shared/app.paths';
 
 @Component({
-    selector: 'app-login',
-    standalone: true,
-    imports: [CommonModule, FormsModule],
-    template: `
+  selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  template: `
     <div style="max-width: 400px; margin: 50px auto; padding: 20px;">
       <h2>Login</h2>
       
@@ -26,12 +28,21 @@ import { AuthService } from '../../../core/services/auth.service';
   `
 })
 export class LoginComponent {
-    email = '';
-    password = '';
+  email = '';
+  password = '';
 
-    constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
-    login() {
-        this.auth.login(this.email, this.password);
-    }
+  login() {
+    this.auth.login(this.email, this.password).subscribe({
+      next: (response) => {
+        console.log('Login OK', response);
+        this.auth.saveToken(response.token);
+        this.router.navigate([AppPaths.TASKS.ROOT]);
+      },
+      error: (err) => {
+        console.error('Login failed', err);
+      }
+    });
+  }
 }

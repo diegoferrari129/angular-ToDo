@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
@@ -11,19 +11,21 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    login(email: string, password: string) {
+    login(email: string, password: string): Observable<{ token: string }> {
         const body = { email, password };
+        return this.http.post<{ token: string }>(`${this.apiUrl}/login`, body);
+    }
 
-        this.http.post<{ token: string }>(`${this.apiUrl}/login`, body)
-            .subscribe({
-                next: (response) => {
-                    localStorage.setItem(this.tokenKey, response.token);
-                    this.router.navigate(['/tasks']);
-                },
-                error: (err) => {
-                    console.error('Login fallito', err);
-                }
-            });
+    saveToken(token: string): void {
+        localStorage.setItem(this.tokenKey, token);
+    }
+
+    getToken(): string | null {
+        return localStorage.getItem(this.tokenKey);
+    }
+
+    isLoggedIn(): boolean {
+        return this.getToken() !== null;
     }
 
     logout() {
@@ -31,12 +33,5 @@ export class AuthService {
         this.router.navigate(['/login']);
     }
 
-    getToken(): string | null {
-        const token = localStorage.getItem(this.tokenKey);
-        return token;
-    }
 
-    isLoggedIn(): boolean {
-        return this.getToken() !== null;
-    }
 }

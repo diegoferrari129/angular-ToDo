@@ -4,9 +4,14 @@ import { MainLayout } from './layouts/main-layout/main-layout';
 import { LoginComponent } from './features/auth/login/login.component';
 import { authGuard } from './core/guards/auth.guard';
 import { TaskFormComponent } from './features/task/components/task-form/task-form.component/task-form.component';
+import { AppPaths } from './shared/app.paths';
 
 export const routes: Routes = [
 
+    {
+        path: AppPaths.LOGIN.substring(1),
+        component: LoginComponent
+    },
     {
         path: '',
         component: MainLayout,
@@ -14,19 +19,15 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'login',
+                redirectTo: AppPaths.TASKS.ROOT.substring(1),
                 pathMatch: 'full'
             },
             {
-                path: 'login',
-                component: LoginComponent
-            },
-            {
-                path: 'tasks/new',
+                path: AppPaths.TASKS.TASKS_NEW.substring(1),
                 component: TaskFormComponent
             },
             {
-                path: 'tasks',
+                path: AppPaths.TASKS.ROOT.substring(1),
                 component: TaskItemComponent
             },
         ]

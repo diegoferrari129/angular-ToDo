@@ -1,5 +1,8 @@
 import { inject } from '@angular/core';
+
 import { Router } from '@angular/router';
+import { AppPaths } from '../../shared/app.paths';
+
 import { AuthService } from '../services/auth.service';
 
 export const authGuard = () => {
@@ -10,5 +13,5 @@ export const authGuard = () => {
         return true;
     }
 
-    return router.parseUrl('/login');
+    return router.parseUrl(AppPaths.LOGIN);
 };

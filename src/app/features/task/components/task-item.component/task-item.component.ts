@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
-import { TaskItemService } from '../../services/task-item.service';
-import { TaskItem } from '../../models/task-item.model';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { AppPaths } from '../../../../shared/app.paths';
+
+import { TaskItemService } from '../../services/task-item.service';
+import { TaskItem } from '../../models/task-item.model';
 
 @Component({
   selector: 'app-task-item',
@@ -14,6 +17,7 @@ import { RouterLink } from '@angular/router';
 })
 export class TaskItemComponent implements OnInit {
   tasks$!: Observable<TaskItem[]>;
+  readonly AppPaths = AppPaths;
 
   constructor(private taskItemService: TaskItemService) { }
 

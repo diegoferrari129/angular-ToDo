@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+
+import { Router } from '@angular/router';
+import { AppPaths } from '../../shared/app.paths';
+
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -29,9 +35,13 @@ export class LoginComponent {
   email = '';
   password = '';
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
-  login() {
-    this.auth.login(this.email, this.password);
+  login(): void {
+    this.auth.login(this.email, this.password).subscribe({
+      next: () => {
+        this.router.navigate([AppPaths.TASKS.ROOT]);
+      }
+    });
   }
 }

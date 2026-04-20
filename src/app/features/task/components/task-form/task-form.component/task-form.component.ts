@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 
-import { CreateTaskItem } from '../../../models/create-task-item.model';
+import { Router } from '@angular/router';
+import { AppPaths } from '../../../../../shared/app.paths';
+
 import { TaskItemService } from '../../../services/task-item.service';
+import { CreateTaskItem } from '../../../models/create-task-item.model';
 
 @Component({
   selector: 'app-task-form.component',
@@ -24,7 +27,7 @@ export class TaskFormComponent {
   createTask(): void {
     this.taskItemService.postTask(this.task).subscribe({
       next: () => {
-        this.router.navigate(['/tasks']);
+        this.router.navigate([AppPaths.TASKS.ROOT]);
       },
     });
   }

@@ -1,28 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TaskItemService } from '../../services/task-item.service';
 import { TaskItem } from '../../models/task-item.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-item',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './task-item.component.html',
-  styleUrl: './task-item.component.css',
+  styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent implements OnInit {
-  tasks: TaskItem[] = [];
+  tasks$!: Observable<TaskItem[]>;
 
   constructor(private taskItemService: TaskItemService) { }
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.tasks$ = this.taskItemService.getTasks();
   }
-
-  loadTasks(): void {
-    this.taskItemService.getTasks().subscribe({
-      next: (data) => {
-        this.tasks = data;
-      },
-    });
-  }
-
 }

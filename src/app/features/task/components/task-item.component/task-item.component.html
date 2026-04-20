@@ -1,8 +1,11 @@
-<div>
-    content
-    @for (task of tasks; track task.id) {
-    <div>
-        <h4>{{ task.title }}</h4>
-    </div>
+<div class="container">
+    @for (task of tasks$ | async; track task.id) {
+
+    <h4>{{ task.title }}</h4>
+    <p>{{ task.description }}</p>
+
+    } @empty {
+    <p>Nessun task disponibile.</p>
     }
+
 </div>

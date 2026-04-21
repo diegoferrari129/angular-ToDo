@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppPaths } from '../../shared/app.paths';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from './auth.service';
 
 export const authGuard = () => {
     const authService = inject(AuthService);

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SidebarService } from '../../services/sidebar.service';
+import { SidebarService } from '../sidebar/sidebar.service';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 import { AppPaths } from '../../../shared/app.paths';
 
@@ -10,8 +10,8 @@ import { AppPaths } from '../../../shared/app.paths';
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
 })
 export class Header {
   private appPaths = AppPaths;

@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Router } from '@angular/router';
-import { AppPaths } from '../../../../../shared/app.paths';
+import { AppPaths } from '../../../../shared/app.paths';
 
-import { TaskItemService } from '../../../services/task-item.service';
-import { CreateTaskItem } from '../../../models/create-task-item.model';
+import { TaskItemService } from '../../services/task-item.service';
+import { CreateTaskItem } from '../../models/create-task-item.model';
 
 @Component({
   selector: 'app-task-form.component',

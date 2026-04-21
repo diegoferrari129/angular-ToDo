@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
-import { AppPaths } from '../../../../shared/app.paths';
+import { AppPaths } from '../../shared/app.paths';
 
-import { TaskItemService } from '../../services/task-item.service';
-import { TaskItem } from '../../models/task-item.model';
+import { TaskItemService } from './services/task-item.service';
+import { TaskItem } from './models/task-item.model';
 
 @Component({
   selector: 'app-task-item',

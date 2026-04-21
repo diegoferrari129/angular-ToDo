@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
 })
-export class MainLayout {
+export class MainComponent {
   constructor(public sidebarService: SidebarService) { }
 }

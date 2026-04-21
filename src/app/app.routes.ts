@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { TaskItemComponent } from './features/task/task-item.component';
-import { MainLayout } from './core/layout/main/main.component';
+import { MainComponent } from './core/layout/main/main.component';
 import { LoginComponent } from './core/auth/pages/login/login.component';
 import { authGuard } from './core/auth/auth.guard';
 import { TaskFormComponent } from './features/task/components/task-form/task-form.component';
@@ -14,7 +14,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        component: MainLayout,
+        component: MainComponent,
         canActivate: [authGuard],
         children: [
             {

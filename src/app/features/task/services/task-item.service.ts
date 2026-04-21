@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TaskItem } from '../models/task-item.model';
 import { Observable } from 'rxjs';
-import { Api } from '../../../core/services/api.server';
+import { Api } from '../../../core/services/api.service';
 import { CreateTaskItem } from '../models/create-task-item.model';
 
 @Injectable({
